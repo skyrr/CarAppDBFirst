@@ -1,0 +1,81 @@
+﻿@model IEnumerable<CarAppDBFirst.Travel>
+
+@{
+    ViewBag.Title = "Index";
+    int totalConsumption = 0;
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TravelDate)
+        </th>
+        <th>
+            Car name
+        </th>
+        <th>
+            Total consumption
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Direction.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Direction.Distance)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TravelDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Car.Name)
+        </td>
+        <td>
+            @(item.Car.Consumption * item.Direction.Distance * 0.01)
+            @{
+                totalConsumption += (int)(item.Car.Consumption * item.Direction.Distance * 0.0100);
+            }
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Direction.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Direction.Distance)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.TravelId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.TravelId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.TravelId })
+        </td>
+    </tr>
+}
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td><h4>total consumption for all trips:</h4>
+            @{if (Model != null)
+                {
+
+            <h3>@(totalConsumption) liters</h3> 
+                }
+            }
+        </td>        
+        <td></td>
+        <td></td>
+    </tr>
+</table>

@@ -1,0 +1,50 @@
+﻿@model CarAppDBFirst.Direction
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Direction</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Distance)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Distance)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Point.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Point.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Point1.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Point1.Name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.DirectionId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
